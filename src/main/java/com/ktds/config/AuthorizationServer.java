@@ -27,9 +27,9 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
 
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
-		//endpoints.authenticationManager(authenticationManager);
-		endpoints.tokenStore(JdbcTokenStore) 
-				.authenticationManager(authenticationManager);
+		endpoints.authenticationManager(authenticationManager);
+		//endpoints.tokenStore(JdbcTokenStore) 
+			//	.authenticationManager(authenticationManager);
 	}
 	
 	@Autowired
@@ -38,13 +38,13 @@ public class AuthorizationServer extends AuthorizationServerConfigurerAdapter {
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception { 
 		//DB사용시 주석제거 
-		clients.jdbc(dataSource);
+		//clients.jdbc(dataSource);
 		
-//		clients.inMemory().withClient("8c7c59df-a4ee-4b09-8167-a0977c6a7588").secret("b8617a5a-822d-49c0-824a-85715306b0aa")
-//				.authorizedGrantTypes("authorization_code", "refresh_token", "password")
-//				.scopes("read", "write")
-//				.accessTokenValiditySeconds(86400)
-//				.refreshTokenValiditySeconds(86400);
+		clients.inMemory().withClient("8c7c59df-a4ee-4b09-8167-a0977c6a7588").secret("b8617a5a-822d-49c0-824a-85715306b0aa")
+				.authorizedGrantTypes("authorization_code", "refresh_token", "password")
+				.scopes("read", "write")
+				.accessTokenValiditySeconds(86400)
+				.refreshTokenValiditySeconds(86400);
 	
 	}
 	
